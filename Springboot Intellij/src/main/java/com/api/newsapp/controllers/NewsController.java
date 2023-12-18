@@ -42,6 +42,7 @@ public class NewsController {
         return newsService.updateById(request, id);
     }
 
+
     @DeleteMapping(path = "/{id}")
     public String deleteById(@PathVariable("id") Long id) {
         boolean ok = newsService.deleteNews(id);
