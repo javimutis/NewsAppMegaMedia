@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), NewsAdapter.OnNewsClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
-    private var newsList: MutableList<News> = mutableListOf()
+    var newsList: MutableList<News> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), NewsAdapter.OnNewsClickListener {
     }
 
     // Función para cargar los datos de las noticias desde la API
-    private fun loadNewsData() {
+    fun loadNewsData() {
         val service: ApiService = RetrofitClient.instance
 
         // Realizar la solicitud para obtener las noticias
