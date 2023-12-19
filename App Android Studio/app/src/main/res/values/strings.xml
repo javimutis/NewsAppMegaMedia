@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MegamediaApp</string>
+    <string name="back_button">BACK</string>
 </resources>
