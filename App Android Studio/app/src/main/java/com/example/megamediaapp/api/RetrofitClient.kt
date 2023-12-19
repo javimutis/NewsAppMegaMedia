@@ -3,19 +3,20 @@ package com.example.megamediaapp.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+// Objeto Singleton para configurar y obtener una instancia de Retrofit
 object RetrofitClient {
-    // Definir la URL base de la API
+    // URL base de la API
     private const val BASE_URL = "https://springgcp-407920.rj.r.appspot.com"
 
-    // Crear una instancia única de Retrofit para interactuar con la API
+    // Inicialización perezosa de la instancia de ApiService
     val instance: ApiService by lazy {
-        // Configurar Retrofit con la URL base y el convertidor de JSON a objetos
+        // Configuración de Retrofit con la URL base y el convertidor de Gson
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()) // Usar Gson para convertir JSON a objetos
+            .addConverterFactory(GsonConverterFactory.create()) // Conversión de JSON a objetos utilizando Gson
             .build()
 
-        // Crear e inicializar el servicio ApiService utilizando Retrofit
+        // Creación e inicialización del servicio ApiService utilizando Retrofit
         retrofit.create(ApiService::class.java)
     }
 }

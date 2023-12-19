@@ -4,9 +4,23 @@
     android:layout_height="match_parent"
     android:background="#1E1E1E">
 
+    <!-- Botón de retorno -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back_button"
+        android:layout_margin="16dp"
+        android:onClick="onBackButtonClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/backButton"/>
 
 </RelativeLayout>
