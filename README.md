@@ -1,6 +1,6 @@
 # 📰 Megamedia News App
 
-Megamedia News es una aplicación Android nativa desarrollada en **Kotlin** que permite a los usuarios leer y visualizar artículos y noticias.  
+Megamedia News es una aplicación Android nativa desarrollada en **Kotlin** que permite a los usuarios explorar noticias y reproducir videos asociados a cada noticia. 
 Está conectada a una **API desarrollada en Java con Spring Boot**, que gestiona los datos de las noticias almacenados en una base de datos **MySQL**.
 
 <p align="center">
