@@ -1,59 +1,70 @@
-# Megamedia News App
+# 📰 Megamedia News App
 
-Megamedia News es una aplicación Android nativa desarrollada en Kotlin que permite a los usuarios leer y visualizar artículos y noticias. Además, la aplicación está conectada a una API desarrollada en Java con Spring Boot, la cual gestiona los datos de las noticias almacenados en una base de datos MySQL.
+Megamedia News es una aplicación Android nativa desarrollada en **Kotlin** que permite a los usuarios leer y visualizar artículos y noticias.  
+Está conectada a una **API desarrollada en Java con Spring Boot**, que gestiona los datos de las noticias almacenados en una base de datos **MySQL**.
 
-## Tecnologías Utilizadas
+![Demo de la App](assets/demo.gif)
 
-### Springboot Intellij
-- Lenguaje: Java
-- Framework: Spring Boot
-- Base de datos: MySQL (alojada en Google Cloud)
-- Controlador (API REST): NewsController
-  - Maneja las operaciones CRUD para las noticias.
-- Modelo de Noticia: NewsModel
-  - Define la estructura de una noticia con atributos como ID, título, descripción, URL de imagen y URL de video.
-- Repositorio: INewsRepository
-  - Extiende de CrudRepository para acceder y gestionar las noticias en la base de datos.
+---
 
-### Android Studio
-- Lenguaje: Kotlin
-- Librerías:
-  - Retrofit2: Para interactuar con la API.
-  - ExoPlayer: Reproduce videos dentro de la aplicación.
+## 👩‍🏫 ¿Qué hace esta app?
 
-### Base de Datos
-- MySQL
-  - Almacena los datos de las noticias.
-  - Contiene al menos 3 artículos de ejemplo.
+✅ Lista noticias obtenidas desde la API.  
+✅ Permite reproducir videos asociados a cada noticia utilizando **ExoPlayer**.  
+✅ Funciona con datos reales de la API o con datos de prueba en caso de error.  
+✅ Interfaz simple e intuitiva para explorar noticias y contenido multimedia.  
+✅ Se probó la API con **Postman** antes de integrarla en la app.
 
-## Scripts
+---
 
-### MySQL
-- **springdb_news.sql**: Script para la creación de la base de datos y la inserción de datos de ejemplo.
+## 🧠 Arquitectura y Componentes
 
-## Funcionalidades
+La app está organizada para mantener el código **ordenado y escalable**:
 
-- **API REST**: La API expone endpoints para realizar operaciones CRUD en las noticias.
-- **App Android**:
-  - Lista las noticias obtenidas de la API usando Retrofit.
-  - Permite reproducir videos asociados a cada noticia utilizando ExoPlayer cuando se selecciona una noticia.
+### 🧱 Modelo (Model)
+- `News.kt`: Modelo de dominio que representa una noticia con atributos como `id`, `title`, `description`, `imageUrl` y `videoUrl`.
 
-## Instrucciones de Uso
+### 🌐 Red (Network)
+- `ApiService.kt`: Define los endpoints de la API REST para obtener las noticias.  
+- `RetrofitClient.kt`: Configura Retrofit para interactuar con la API.
 
-1. **Clonar el Repositorio**: Clona este repositorio para acceder al código de la aplicación Android, la API Spring Boot y el script de la base de datos MySQL.
-2. **Configuración de Springboot Intellij**:
-   - Configura el entorno de desarrollo con IntelliJ para ejecutar el backend.
-   - Configura la conexión con la base de datos MySQL.
-3. **Configuración de Android Studio**:
-   - Ejecuta la aplicación Android y asegúrate de que esté conectada correctamente a la API.
-4. **Interactúa con la Aplicación**:
-   - La aplicación Android lista las noticias y permite reproducir videos cuando se selecciona una noticia.
+### 👁️ Vista (View)
+- `MainActivity.kt`: Muestra la lista de noticias y maneja la interacción con ellas.  
+- `VideoPlayerActivity.kt`: Reproduce videos asociados a cada noticia con **ExoPlayer**.  
+- `NewsAdapter.kt`: Adapter de RecyclerView que muestra imágenes, títulos y descripciones, e incluye manejo de clics para reproducir videos.
 
-## Notas adicionales
+### 🗄️ Backend
+- **Spring Boot (Java)**: Gestiona los endpoints de la API.  
+  - `NewsController`: Maneja operaciones CRUD para noticias.  
+  - `INewsRepository`: Acceso a la base de datos MySQL.  
+  - `NewsModel`: Define la estructura de la noticia.  
+- **MySQL**: Base de datos alojada en **Google Cloud**, con al menos 3 artículos de ejemplo.  
+- Scripts de ejemplo: `springdb_news.sql` para crear la base de datos e insertar datos iniciales.
 
-Se probó la funcionalidad de la API utilizando Postman para asegurar su correcto funcionamiento antes de integrarla con la aplicación Android.
+---
 
-Este proyecto fue desarrollado para una prueba técnica y contiene datos de ejemplo para demostración.
+## 🧰 Tecnologías utilizadas
 
+- **Android Studio** (Kotlin)  
+- **Retrofit2** para comunicación con API REST  
+- **ExoPlayer** para reproducción de video  
+- **Spring Boot** (Java) para backend  
+- **MySQL** como base de datos  
+- **Postman** para pruebas de la API
 
+---
 
+## ⚙️ Cómo correr este proyecto
+
+1. Clona el repositorio.  
+2. Configura la **API Spring Boot** en IntelliJ:  
+   - Conecta la base de datos MySQL.  
+   - Ejecuta la aplicación backend.  
+3. Abre el proyecto **Android Studio** y ejecuta la app.  
+4. La app listará noticias desde la API y reproducirá videos al seleccionarlas.  
+5. Si la conexión falla, se cargan datos de prueba automáticamente.
+
+---
+
+✨ Este proyecto fue desarrollado como prueba técnica y está listo para demostración.  
+Se puede expandir agregando navegación avanzada, filtros de noticias, categorías, favoritos, o mejoras en la reproducción de video.
