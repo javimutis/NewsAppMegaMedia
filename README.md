@@ -1,73 +1,82 @@
 # 📰 Megamedia News App
 
-Megamedia News es una aplicación Android nativa desarrollada en **Kotlin** que permite a los usuarios explorar noticias y reproducir videos asociados a cada noticia. 
-Está conectada a una **API desarrollada en Java con Spring Boot**, que gestiona los datos de las noticias almacenados en una base de datos **MySQL**.
+**Megamedia News** is a native Android application built with **Kotlin**, allowing users to browse news articles and play associated videos seamlessly.  
+It connects to a **Java Spring Boot API** that manages news data stored in a **MySQL database**.
 
 <p align="center">
   <img src="assets/demo.gif" alt="Demo de la App" width="250"/>
 </p>
 
+---
+
+## 👩‍🏫 What Does This App Do?
+
+- **Fetch and display news** from a real API.  
+- **Play videos inside the app** using **ExoPlayer**.  
+- **Fallback test data** when the API is unavailable.  
+- **Simple, intuitive UI** designed for quick navigation and content consumption.  
+- **Thoroughly tested with Postman** before Android integration.  
 
 ---
 
-## 👩‍🏫 ¿Qué hace esta app?
+## 🧠 Architecture & Components
 
-✅ Lista noticias obtenidas desde la API.  
-✅ Permite reproducir videos asociados a cada noticia utilizando **ExoPlayer**.  
-✅ Funciona con datos reales de la API o con datos de prueba en caso de error.  
-✅ Interfaz simple e intuitiva para explorar noticias y contenido multimedia.  
-✅ Se probó la API con **Postman** antes de integrarla en la app.
+The project follows a **clean, scalable structure** for maintainability:
 
----
+### 🧱 Model Layer
+- `News.kt`: Domain model representing a news article (`id`, `title`, `description`, `imageUrl`, `videoUrl`).  
 
-## 🧠 Arquitectura y Componentes
+### 🌐 Network Layer
+- `ApiService.kt`: Defines REST API endpoints.  
+- `RetrofitClient.kt`: Configures Retrofit for network communication.  
 
-La app está organizada para mantener el código **ordenado y escalable**:
-
-### 🧱 Modelo (Model)
-- `News.kt`: Modelo de dominio que representa una noticia con atributos como `id`, `title`, `description`, `imageUrl` y `videoUrl`.
-
-### 🌐 Red (Network)
-- `ApiService.kt`: Define los endpoints de la API REST para obtener las noticias.  
-- `RetrofitClient.kt`: Configura Retrofit para interactuar con la API.
-
-### 👁️ Vista (View)
-- `MainActivity.kt`: Muestra la lista de noticias y maneja la interacción con ellas.  
-- `VideoPlayerActivity.kt`: Reproduce videos asociados a cada noticia con **ExoPlayer**.  
-- `NewsAdapter.kt`: Adapter de RecyclerView que muestra imágenes, títulos y descripciones, e incluye manejo de clics para reproducir videos.
+### 👁️ View Layer
+- `MainActivity.kt`: Displays the news list and handles user interactions.  
+- `VideoPlayerActivity.kt`: Plays videos using **ExoPlayer**.  
+- `NewsAdapter.kt`: RecyclerView adapter rendering images, titles, and descriptions with click handling for video playback.  
 
 ### 🗄️ Backend
-- **Spring Boot (Java)**: Gestiona los endpoints de la API.  
-  - `NewsController`: Maneja operaciones CRUD para noticias.  
-  - `INewsRepository`: Acceso a la base de datos MySQL.  
-  - `NewsModel`: Define la estructura de la noticia.  
-- **MySQL**: Base de datos alojada en **Google Cloud**, con al menos 3 artículos de ejemplo.  
-- Scripts de ejemplo: `springdb_news.sql` para crear la base de datos e insertar datos iniciales.
+- **Spring Boot (Java):** REST API management.  
+  - `NewsController`: Handles CRUD operations for news articles.  
+  - `INewsRepository`: Database access layer.  
+  - `NewsModel`: Database entity definition.  
+- **MySQL Database:** Hosted on **Google Cloud**, preloaded with example articles.  
+- **Sample Scripts:** `springdb_news.sql` to create and populate the database.  
 
 ---
 
-## 🧰 Tecnologías utilizadas
+## 🧰 Tech Stack
 
-- **Android Studio** (Kotlin)  
-- **Retrofit2** para comunicación con API REST  
-- **ExoPlayer** para reproducción de video  
-- **Spring Boot** (Java) para backend  
-- **MySQL** como base de datos  
-- **Postman** para pruebas de la API
-
----
-
-## ⚙️ Cómo correr este proyecto
-
-1. Clona el repositorio.  
-2. Configura la **API Spring Boot** en IntelliJ:  
-   - Conecta la base de datos MySQL.  
-   - Ejecuta la aplicación backend.  
-3. Abre el proyecto **Android Studio** y ejecuta la app.  
-4. La app listará noticias desde la API y reproducirá videos al seleccionarlas.  
-5. Si la conexión falla, se cargan datos de prueba automáticamente.
+- **Android Studio (Kotlin)**  
+- **Retrofit2** – REST API communication  
+- **ExoPlayer** – In-app video playback  
+- **Spring Boot (Java)** – Backend service  
+- **MySQL** – Cloud-hosted database  
+- **Postman** – API testing  
 
 ---
 
-✨ Este proyecto fue desarrollado como prueba técnica y está listo para demostración.  
-Se puede expandir agregando navegación avanzada, filtros de noticias, categorías, favoritos, o mejoras en la reproducción de video.
+## ⚙️ How to Run This Project
+
+1. **Clone the repository.**  
+2. **Set up the Spring Boot API in IntelliJ:**  
+   - Connect it to your MySQL database.  
+   - Run the backend application.  
+3. **Open the Android project in Android Studio** and run the app.  
+4. The app will fetch news from the API and play videos when selected.  
+5. If the API is unavailable, **fallback test data is loaded automatically.**  
+
+---
+
+## ✨ Project Highlights
+
+- Developed as a **technical test project** and fully functional for demo purposes.  
+- Ready for **feature expansion**, such as:  
+  - Advanced navigation and categories  
+  - Search and filtering options  
+  - Favorites and offline reading  
+  - Enhanced video playback features  
+
+---
+
+**This project demonstrates end-to-end development, API integration, clean architecture principles, and scalable Android practices — making it a strong foundation for production-ready news or media apps.**
